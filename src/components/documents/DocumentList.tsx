@@ -12,14 +12,14 @@ export const DocumentList = ({
   if (!documents.length) {
     return (
       <EmptyState
-        title="No Documents"
-        description="Create your first document."
+        title="No Documents Yet"
+        description="Create your first document or import a file to get started."
       />
     );
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
       {documents.map((document) => (
         <DocumentCard
           key={document.id}

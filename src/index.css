@@ -5,7 +5,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
+/* :root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -95,12 +95,32 @@
   --sidebar-border: oklch(0.922 0 0);
 
   --sidebar-ring: oklch(0.708 0 0)
-}
+} */
 
+:root {
+  --background: #fafafa;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f5f3ff;
+  --secondary-foreground: #6d28d9;
+
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+
+  --accent: #ede9fe;
+  --accent-foreground: #6d28d9;
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+}
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
@@ -137,7 +157,6 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
 }
 
 h1 {
@@ -167,7 +186,7 @@ code,
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
-  color: var(--text-h);
+
 }
 
 code {

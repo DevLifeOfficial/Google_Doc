@@ -22,7 +22,6 @@ import type { User } from "../types";
 export const EditorPage = () => {
   const { id } = useParams();
   
-    const [uploadOpen, setUploadOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
     const [users, setUsers] = useState<User[]>([]);
 
@@ -74,23 +73,6 @@ async function loadUsers() {
     );
   }
 
-  async function handleFileUpload(
-  file: File
-) {
-  try {
-    const document =
-      await documentService.createFromFile(
-        file,
-        actual_current_user
-      );
-
-    setUploadOpen(false);
-
-    navigate(`/documents/${document.id}`);
-  } catch (error) {
-    console.error(error);
-  }
-}
 
   if (loading) {
     return <div>Loading...</div>;
@@ -105,7 +87,6 @@ async function loadUsers() {
         onTitleChange={
           renameDocument
         }
-        onUpload={() => setUploadOpen(true)}
         onShare={() => setShareOpen(true)}
       />
 
@@ -114,11 +95,6 @@ async function loadUsers() {
         onChange={setContent}
       />
 
-      <UploadDialog
-  open={uploadOpen}
-  onOpenChange={setUploadOpen}
-  onFileSelected={handleFileUpload}
-/>
 
 <ShareDialog
   open={shareOpen}

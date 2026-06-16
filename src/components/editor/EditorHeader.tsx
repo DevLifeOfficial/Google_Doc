@@ -12,7 +12,6 @@ interface Props {
   saved: boolean;
   onBack: () => void;
   onTitleChange: (value: string) => void;
-  onUpload: () => void;
   onShare: () => void;
 }
 
@@ -21,7 +20,6 @@ export const EditorHeader = ({
   saved,
   onBack,
   onTitleChange,
-  onUpload,
   onShare,
 }: Props) => {
   return (
@@ -34,7 +32,6 @@ export const EditorHeader = ({
         <RenameDocumentInput value={title} onChange={onTitleChange} />
       </div>
       <div className="flex items-center gap-2">
-        <UploadButton onClick={onUpload} />
 
         <Button variant="outline" onClick={onShare}>
           Share
