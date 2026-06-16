@@ -196,6 +196,18 @@ code {
   background: var(--code-bg);
 }
 
+.ProseMirror ul {
+  @apply list-disc pl-2;
+}
+
+.ProseMirror ol {
+  @apply list-decimal pl-2;
+}
+
+.ProseMirror li {
+  @apply my-1;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: 'Inter Variable', sans-serif;
