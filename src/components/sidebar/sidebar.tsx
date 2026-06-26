@@ -8,25 +8,25 @@ import {
   HelpCircle,
   PenSquare,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FolderSidebar } from "./FolderSideBar";
 
 interface NavItem {
   label: string;
   icon: typeof FileText;
+  url: string;
 }
 
-// NOTE: "Shared with me", "Recent", and "Trash" don't have routes yet in
-// what I've seen of your app — clicking them just highlights for now.
-// Wire them up once those pages/queries exist.
 const primaryNav: NavItem[] = [
-  { label: "My Documents", icon: FileText },
-  { label: "Shared with me", icon: Share2 },
-  { label: "Recent", icon: Clock },
-  { label: "Trash", icon: Trash2 },
+  { label: "My Documents", icon: FileText, url: "/" },
+  { label: "Shared with me", icon: Share2, url: "/shared" },
+  { label: "Recent", icon: Clock, url: "/recent" },
+  { label: "Trash", icon: Trash2, url: "/trash" },
 ];
 
 const secondaryNav: NavItem[] = [
-  { label: "Settings", icon: Settings },
-  { label: "Help Center", icon: HelpCircle },
+  { label: "Settings", icon: Settings, url: "/settings" },
+  { label: "Help Center", icon: HelpCircle, url: "/help" },
 ];
 
 interface CurrentUser {
@@ -38,19 +38,18 @@ interface SidebarProps {
   currentUser?: CurrentUser;
 }
 
-// NOTE: defaulted currentUser since I don't have your real user-fetching
-// logic here — pass the actual signed-in user's name/email in as a prop.
 export const Sidebar = ({
   currentUser = { name: "Ram Kumar", email: "ram@example.com" },
 }: SidebarProps) => {
   const [active, setActive] = useState("My Documents");
+  const [folderId, setFolderId] = useState<string | null>(null);
 
   const renderNavGroup = (items: NavItem[]) =>
-    items.map(({ label, icon: Icon }) => {
+    items.map(({ label, icon: Icon, url }) => {
       const isActive = active === label;
 
       return (
-        <button
+        <Link to={url}
           key={label}
           onClick={() => setActive(label)}
           className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
@@ -61,7 +60,7 @@ export const Sidebar = ({
         >
           <Icon size={18} />
           {label}
-        </button>
+        </Link>
       );
     });
 
@@ -71,12 +70,16 @@ export const Sidebar = ({
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
           <PenSquare size={16} />
         </div>
-        <span className="text-lg font-bold tracking-tight">Ajaia</span>
+        <span className="text-lg font-bold tracking-tight">Nebula Docs</span>
       </div>
 
-      <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
-        {renderNavGroup(primaryNav)}
+
+      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-3">
+       <div> {renderNavGroup(primaryNav)}</div>
+
+          <div className="mx-auto"><FolderSidebar selectedFolderId={folderId} onSelectFolder={setFolderId} /></div>
       </nav>
+
 
       <div className="space-y-1 border-t px-3 py-4">
         {renderNavGroup(secondaryNav)}

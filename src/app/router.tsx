@@ -1,10 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-
 import { AppLayout } from "../layouts/AppLayout";
-
-import { DashboardPage } from "../pages/DashboardPage";
-import { EditorPage } from "../pages/EditorPage";
-import { NotFoundPage } from "../pages/NotFoundPage";
+import {
+  DashboardPage,
+  NotFoundPage,
+  EditorPage,
+  RecentDocumentsPage,
+} from "../pages/index";
+import { DashBoardLayout } from "../layouts/DashBoardLayout";
+import { EditorLayout } from "../layouts/EditorLayout";
+import { Trash } from "../components/trash/trash";
 
 export const router = createBrowserRouter([
   {
@@ -12,17 +16,35 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        index: true,
-        element: <DashboardPage />,
+        element: <DashBoardLayout />,
+        children: [
+          {
+            path: "/",
+            element: <DashboardPage />,
+          },
+          {
+            path: "/recent",
+            element: <RecentDocumentsPage />,
+          },
+          {
+            path:"/trash",
+            element: <Trash/>
+          },
+          {
+            path: "*",
+            element: <NotFoundPage />,
+          },
+        ],
       },
       {
-        path: "documents/:id",
-        element: <EditorPage />,
+        element: <EditorLayout />,
+        children: [
+          {
+            path: "documents/:id",
+            element: <EditorPage />,
+          },
+        ],
       },
     ],
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
   },
 ]);

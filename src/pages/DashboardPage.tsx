@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { documentService } from "../services";
 import type { Document } from "../types";
-import { Sidebar } from "../components/sidebar/sidebar";
 import { DashboardHeader } from "../components/dashboard/DashboardHeader";
 import { DocumentCard } from "../components/documents/DocumentCard";
 import { LoadingState } from "../components/common/LoadingState";
@@ -82,8 +81,6 @@ export const DashboardPage = () => {
 
   return (
     <div className="flex min-h-screen bg-muted/30">
-      <Sidebar />
-
       <div className="w-full h-screen overflow-y-auto">
         <div className="mx-auto max-w-8xl space-y-8 px-4 py-6 sm:px-8 sm:py-8">
           <div className="relative w-full max-w-sm">

@@ -1,4 +1,4 @@
-import { supabase } from "../lib/supbase";
+import { supabase } from "../lib/supabase";
 import type { CreateDocumentPayload, Document } from "../types";
 
 export const documentService = {
@@ -94,6 +94,7 @@ export const documentService = {
 
     return true;
   },
+
 };
 
 

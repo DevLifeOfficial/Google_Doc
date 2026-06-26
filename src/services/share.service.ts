@@ -1,4 +1,4 @@
-import { supabase } from "../lib/supbase";
+import { supabase } from "../lib/supabase";
 import type { User } from "../types";
 
 export const shareService = {
