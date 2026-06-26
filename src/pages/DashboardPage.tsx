@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
-
 import { documentService } from "../services";
 import type { Document } from "../types";
-
 import { Sidebar } from "../components/sidebar/sidebar";
 import { DashboardHeader } from "../components/dashboard/DashboardHeader";
 import { DocumentCard } from "../components/documents/DocumentCard";
@@ -12,7 +10,7 @@ import { LoadingState } from "../components/common/LoadingState";
 import { ErrorState } from "../components/common/ErrorState";
 import { UploadDialog } from "../components/upload/UploadDialog";
 import { actual_current_user } from "../constants/current-user";
-import { TemplatesSection } from "../components/dashboard/Templatesselection";
+import { TemplatesSection } from "../components/dashboard/TemplatesSelection";
 
 export const DashboardPage = () => {
   const [documents, setDocuments] = useState<Document[]>([]);

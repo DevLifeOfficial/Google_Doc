@@ -1,5 +1,5 @@
 import { supabase } from "../lib/supbase";
-import type { CreateDocumentPayload, Document, User } from "../types";
+import type { CreateDocumentPayload, Document } from "../types";
 
 export const documentService = {
   async create(payload: CreateDocumentPayload) {
