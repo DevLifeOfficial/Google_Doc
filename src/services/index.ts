@@ -1,3 +1,3 @@
 export * from "./document.service";
 export * from "./share.service";
-export * from "./user.services";
+export * from "./user.service";

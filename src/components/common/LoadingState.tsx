@@ -1,8 +1,6 @@
-import { Loader2 } from "lucide-react";
-
 export const LoadingState = () => {
   return (
-    <div className="space-y-4 animate-pulse">
+    <div className="space-y-4 animate-pulse" role="status" aria-label="Loading">
       <div className="h-8 w-64 rounded-md bg-muted" />
 
       <div className="h-12 w-full rounded-md bg-muted" />

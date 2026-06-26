@@ -3,10 +3,7 @@ import type { User } from "../types";
 
 export const userService = {
   async getAll() {
-    const { data, error } =
-      await supabase
-        .from("users")
-        .select("*");
+    const { data, error } = await supabase.from("users").select("*");
 
     if (error) throw error;
 
